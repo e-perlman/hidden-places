@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../styles/Button"
 import Logo from '../styles/Logo';
+import { UserContext } from "../context/User";
 
-const NavBar = ({user, setUser}) => {
+const NavBar = () => {
+  const [user, setUser]=useContext(UserContext)
 
-    const handleLogout=() => {
-        fetch("/logout", { method: "DELETE" }).then((r) => {
-          if (r.ok) {
-            setUser(null);
-          }
-        });
-      }
+  const handleLogout=() => {
+      fetch("/logout", { method: "DELETE" }).then((r) => {
+        if (r.ok) {
+          setUser(null);
+        }
+      });
+  }
+
   return (
     <Wrapper>
       <NavCart>

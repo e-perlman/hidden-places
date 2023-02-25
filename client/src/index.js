@@ -5,6 +5,7 @@ import './index.css';
 import App from './components/App';
 import { createGlobalStyle } from "styled-components";
 import reportWebVitals from './reportWebVitals';
+import { UserProvider } from './context/User';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -28,7 +29,9 @@ ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
       <GlobalStyle/>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

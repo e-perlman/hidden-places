@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Error from "../styles/Error"
 import Button from "../styles/Button"
 import { FormGroup, Label, Input, Message } from "../styles/Forms"
 import { useHistory } from "react-router";
+import { UserContext } from "../context/User";
 
 
-const Login = ({onAuth}) => {
+const Login = () => {
+    const [user, setUser]=useContext(UserContext)
     const [userInfo, setUserInfo]=useState({
         username:'',
         password:''
@@ -28,7 +30,7 @@ const Login = ({onAuth}) => {
           }).then((r) => {
             if (r.ok) {
               r.json().then((user) => {
-                onAuth(user)
+                setUser(user)
               });
               history.push("/");
             } else {

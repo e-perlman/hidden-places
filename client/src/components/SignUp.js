@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Error from "../styles/Error"
 import Button from "../styles/Button"
 import { FormGroup, Input, Label, Textarea } from "../styles/Forms";
 import { useHistory } from "react-router";
+import { UserContext } from "../context/User";
 
-const SignUp = ({onAuth}) => {
+const SignUp = () => {
+    const [user, setUser]=useContext(UserContext)
     const [userInfo, setUserInfo]=useState({
         username:'',
         firstName:'',
@@ -36,7 +38,7 @@ const SignUp = ({onAuth}) => {
             }),
           }).then((r) => {
             if (r.ok) {
-              r.json().then((user) => onAuth(user));
+              r.json().then((user) => setUser(user));
               history.push("/");
             } else {
               r.json().then((err) => setErrors(err.errors));

@@ -4,20 +4,20 @@ import SignUp from '../components/SignUp'
 import Button from "../styles/Button"
 import styled from "styled-components";
 
-const Auth = ({onAuth}) => {
+const Auth = () => {
     const [seeLogin,setSeeLogin]=useState(true)
   return (
     <Wrapper>
         {seeLogin? (
             <>
-                <Login onAuth={onAuth}></Login>
+                <Login/>
                 <Divider/>
                 <Button color="secondary" onClick={()=>setSeeLogin(false)}>Don't have a profile?</Button>
             </>
 
         ):(
             <>
-                <SignUp onAuth={onAuth}></SignUp> 
+                <SignUp/>
                 <Divider/>
                 <Button color="secondary" onClick={()=>setSeeLogin(true)}>Already have a profile?</Button> 
             </>
