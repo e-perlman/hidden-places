@@ -1,13 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
-import App from './App';
+import App from './components/App';
+import { createGlobalStyle } from "styled-components";
 import reportWebVitals from './reportWebVitals';
 
+const GlobalStyle = createGlobalStyle`
+  *,
+  *::before, 
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+  }
+
+  body {
+    font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: #282c34;
+    color: hsla(0, 0%, 100%, 0.88)
+  }
+`;
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <React.StrictMode>
+      <GlobalStyle/>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
