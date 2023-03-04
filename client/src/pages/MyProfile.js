@@ -1,23 +1,32 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/User";
+import Grid from "@mui/material"
 
 import styled from 'styled-components'
 
 const MyProfile = () => {
     const [user, setUser]=useContext(UserContext)
   return (
-    <Container>
-        <Main>
-            <UserInfoCard>
-                <h1>{user.first_name} {user.last_name}</h1>
-                <p>{user.bio}</p>
-                {/* <img src={user.profile_pic}></img> */}
-            </UserInfoCard>
-        </Main>
-        <ContentBox>
-        </ContentBox>
+    <div>
+        <Grid></Grid>
+    </div>
+    // <Grid container spacing={2}>
+    //     <Grid item xs={8}>
+
+    //     </Grid>
+    //     <Grid item xs={6}></Grid>
+    //     <Grid item xs={6}></Grid>
+    //     <Main>
+    //         <UserInfoCard>
+    //             {/* <h1>{user.first_name} {user.last_name}</h1>
+    //             <p>{user.bio}</p>
+    //             <img src={user.profile_pic}></img> */}
+    //         </UserInfoCard>
+    //     </Main>
+    //     <ContentBox>
+    //     </ContentBox>
       
-    </Container>
+    // </Grid>
   )
 }
 
