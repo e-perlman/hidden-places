@@ -5,11 +5,13 @@ import { UserContext } from '../context/User'
 import Auth from '../pages/Auth';
 import Home from '../pages/Home';
 import NavBar from './NavBar';
+import MyProfile from '../pages/MyProfile';
 
 function App() {
 
   const [user, setUser]=useContext(UserContext)
 
+  
 
   if (!user) return <Auth/>
 
@@ -19,6 +21,9 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Switch>
+        <Route path="/my_profile">
+            <MyProfile></MyProfile>
+          </Route>
           <Route path='/'>
             <Home user={user}></Home>
           </Route>

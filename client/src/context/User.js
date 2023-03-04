@@ -14,8 +14,6 @@ function UserProvider({ children }) {
         });
       }, []);
 
-      console.log(user)
-
     const value=[user,setUser]
     
     return (
