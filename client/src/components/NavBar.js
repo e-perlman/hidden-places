@@ -4,9 +4,16 @@ import styled from "styled-components";
 import Button from "../styles/Button"
 import Logo from '../styles/Logo';
 import { UserContext } from "../context/User";
+import {Tab, Tabs} from "@mui/material"
 
 const NavBar = () => {
   const [user, setUser]=useContext(UserContext)
+
+  const [val, setVal] = useState('one');
+  
+  const handleTab = (e, newVal) => {
+      setVal(newVal);
+  };
 
   const handleLogout=() => {
       fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -17,20 +24,32 @@ const NavBar = () => {
   }
 
   return (
+    <>
     <Wrapper>
-      <NavCart>
-        <Button as={Link} to="/my_orders"> My Orders</Button>
-        <Button as={Link} to="/my_products"> My Products</Button>
-      </NavCart>
       <Logo>Hidden Places</Logo>
       <Nav>
-        <Button as={Link} to="/new_product">
-          New Product
-        </Button>
+        <Button color="primary"> Add New Site</Button>
         <Button color="secondary" onClick={handleLogout}> Logout</Button>
       </Nav>
-      
     </Wrapper>
+      <Tabs 
+        value={val}
+        onChange={handleTab}
+        textColor="inherit"
+        variant="fullWidth"
+        centered
+        TabIndicatorProps={{
+          style: {
+            backgroundColor: "#006600"
+          }}}
+      >
+        <Tab value ='one' component={Link} label='Home' to="/"/>
+        <Tab value='two' component={Link} label='My Profile' to="/my_profile"/>
+        <Tab value='three' component={Link} label='My Sites' to="/my_sites"/>
+        <Tab value='four' component={Link} label='Sites Feed' to="/feed"/>
+        <Tab value='five' component={Link} label='Following' to="/following"/>
+      </Tabs>
+    </>
   )
 }
 
@@ -38,13 +57,13 @@ const Wrapper = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
+  padding: 20px;
 `;
 
 
 const Nav = styled.nav`
   display: flex;
-  gap: 4px;
+  gap: 20px;
   position: absolute;
   right: 8px;
 `;

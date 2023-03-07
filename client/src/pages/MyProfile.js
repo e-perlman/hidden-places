@@ -1,32 +1,38 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/User";
-import Grid from "@mui/material"
+
+import {Grid, Typography} from "@mui/material"
+import UserFollowCard from "../components/UserFollowCard";
+import UserInfoCard from "../components/UserInfoCard";
 
 import styled from 'styled-components'
 
 const MyProfile = () => {
     const [user, setUser]=useContext(UserContext)
-  return (
-    <div>
-        <Grid></Grid>
-    </div>
-    // <Grid container spacing={2}>
-    //     <Grid item xs={8}>
 
-    //     </Grid>
-    //     <Grid item xs={6}></Grid>
-    //     <Grid item xs={6}></Grid>
-    //     <Main>
-    //         <UserInfoCard>
-    //             {/* <h1>{user.first_name} {user.last_name}</h1>
-    //             <p>{user.bio}</p>
-    //             <img src={user.profile_pic}></img> */}
-    //         </UserInfoCard>
-    //     </Main>
-    //     <ContentBox>
-    //     </ContentBox>
+    console.log(user.followers)
+  return (
+    <Grid 
+        container spacing={4}
+        justifyContent='center'
+        alignItems="center"
+    >
+        <Grid item xs={4}></Grid>
+        <Grid item xs={4}>
+            <UserInfoCard></UserInfoCard>
+        </Grid>
+        <Grid item xs={4}></Grid>
+        <Grid item xs={5} textAlign='center'>
+            <Typography variant='h4'> Followers</Typography>
+            {user.followers.map((follower)=>(
+                <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
+            ))}
+        </Grid>
+        <Grid item xs={2}></Grid>
+        <Grid item xs={5}>Hello</Grid>
+        
       
-    // </Grid>
+    </Grid>
   )
 }
 
@@ -34,15 +40,15 @@ export default MyProfile
 
 
 
-const UserInfoCard = styled.article`
-    border-radius: 6px;
-    box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
-    0 0 0 1px rgb(10 10 10 / 2%);
-    padding: 16px;
-    height: 100%;
-    width : 75%;
-    margin: auto;
-`;
+// const UserInfoCard = styled.article`
+//     border-radius: 6px;
+//     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+//     0 0 0 1px rgb(10 10 10 / 2%);
+//     padding: 16px;
+//     height: 100%;
+//     width : 75%;
+//     margin: auto;
+// `;
 
 const Container = styled.div`
   display: grid;
