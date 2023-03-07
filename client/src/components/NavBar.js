@@ -32,6 +32,7 @@ const NavBar = () => {
         <Button color="secondary" onClick={handleLogout}> Logout</Button>
       </Nav>
     </Wrapper>
+    <TabWrap>
       <Tabs 
         value={val}
         onChange={handleTab}
@@ -49,6 +50,7 @@ const NavBar = () => {
         <Tab value='four' component={Link} label='Sites Feed' to="/feed"/>
         <Tab value='five' component={Link} label='Following' to="/following"/>
       </Tabs>
+      </TabWrap>
     </>
   )
 }
@@ -68,11 +70,8 @@ const Nav = styled.nav`
   right: 8px;
 `;
 
-const NavCart = styled.nav`
-  display: flex;
-  gap: 4px;
-  position: absolute;
-  left: 8px;
+const TabWrap = styled.div`
+  padding: 20px;
 `;
 
 export default NavBar

@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/User";
-import {Card, CardMedia, CardHeader, Avatar, Typography, CardContent, Box, IconButton} from '@mui/material'
+import {Card, CardMedia, Button, Typography, CardContent, Box, IconButton} from '@mui/material'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 
+
 const UserFollowCard = ({user}) => {
-    // const [user, setUser]=useContext(UserContext)
+
   return (
     <Card sx={{ display: 'flex' }}>
         <CardMedia
@@ -22,6 +23,8 @@ const UserFollowCard = ({user}) => {
             <Typography variant="subtitle1" color="text.secondary" component="div">
                 @{user.username}
             </Typography>
+            
+          <Button color='success' size='small'>{user.first_name}'s Sites</Button>
             </CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
           <IconButton aria-label="previous">

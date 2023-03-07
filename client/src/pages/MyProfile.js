@@ -10,7 +10,6 @@ import styled from 'styled-components'
 const MyProfile = () => {
     const [user, setUser]=useContext(UserContext)
 
-    console.log(user.followers)
   return (
     <Grid 
         container spacing={4}
