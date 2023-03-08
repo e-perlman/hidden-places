@@ -36,7 +36,6 @@ const Login = () => {
             } else {
               
               r.json().then((err) => {
-                debugger
                 setErrors(err.errors)});
             }
           });

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
             session[:user_id]=user.id 
             render json: user, include: ['followers','followees'], status: :created
         else
-            render json: {errors: "Not authorized"}, status: :unauthorized
+            render json: {errors: ["Not authorized"]}, status: :unauthorized
         end
     end
 
