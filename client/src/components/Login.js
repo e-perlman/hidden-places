@@ -34,7 +34,10 @@ const Login = () => {
               });
               history.push("/");
             } else {
-              r.json().then((err) => setErrors(err.errors));
+              
+              r.json().then((err) => {
+                debugger
+                setErrors(err.errors)});
             }
           });
     }
