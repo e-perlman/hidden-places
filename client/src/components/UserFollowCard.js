@@ -31,6 +31,7 @@ const UserFollowCard = ({user}) => {
               })
                 .then((r) => {
                   setIsFollowing(false)
+                  onUnfollow(user)
                 }
             )
         ):(
@@ -45,12 +46,23 @@ const UserFollowCard = ({user}) => {
                   if (r.ok) {
                     r.json().then((data) => {
                       setIsFollowing(true)
+                      onFollow(user)
                     })
                   } else {
                     r.json().then((err) => console.log(err.errors))
                   }
             })
         )
+    }
+
+    const onFollow = (user) => {
+        const notFollowing=currentUser.not_following.filter(followee=>followee.id!==user.id)
+        setCurrentUser({...currentUser, followees:[...currentUser.followees,user],not_following:notFollowing})
+    }
+
+    const onUnfollow= (user) => {
+        const updatedFollowees=currentUser.followees.filter(followee=>followee.id!==user.id)
+        setCurrentUser({...currentUser, followees:updatedFollowees, not_following:[...currentUser.not_following,user]})
     }
 
   return (

@@ -25,16 +25,16 @@ const Following = () => {
         <Grid item xs={4} textAlign='center'>
             <Typography variant='h4'> Following</Typography>
             <UserSearch></UserSearch>
-            {user.followees.map((follower)=>(
-                <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
+            {user.followees.map((user)=>(
+                <UserFollowCard key={user.id} user={user}></UserFollowCard>
             ))}
         </Grid>
         <Grid item xs={2}></Grid>
         <Grid item xs={4} textAlign='center'>
             <Typography variant='h4'> All Users</Typography>
             <UserSearch></UserSearch>
-            {user.not_following.map((follower)=>(
-                <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
+            {user.not_following.map((user)=>(
+                <UserFollowCard key={user.id} user={user}></UserFollowCard>
             ))}
         </Grid>
         <Grid item xs={1}></Grid>
