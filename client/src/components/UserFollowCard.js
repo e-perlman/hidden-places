@@ -1,12 +1,57 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/User";
-import {Card, CardMedia, Button, Typography, CardContent, Box, IconButton} from '@mui/material'
+import {Card, CardMedia, Button, Typography, CardContent, Box} from '@mui/material'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import styled from "styled-components";
 
 
 const UserFollowCard = ({user}) => {
+    const [currentUser, setCurrentUser]=useContext(UserContext)
+
+    const [isFollowing, setIsFollowing] = useState(false)
+
+    
+    useEffect(() => {
+        if (currentUser.followees.find(followee => followee.id === user.id)) {
+            setIsFollowing(true)
+          }
+        else {
+            setIsFollowing(false)
+        }
+    }, []);
+
+    const handleFollow = (e)=>{
+        isFollowing ? (
+            fetch(`/relationships/${user.id}`, {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                }
+              })
+                .then((r) => {
+                  setIsFollowing(false)
+                }
+            )
+        ):(
+            fetch("/relationships", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({followee_id: user.id})
+              })
+                .then((r) => {
+                  if (r.ok) {
+                    r.json().then((data) => {
+                      setIsFollowing(true)
+                    })
+                  } else {
+                    r.json().then((err) => console.log(err.errors))
+                  }
+            })
+        )
+    }
 
   return (
     <Wrap>
@@ -19,23 +64,17 @@ const UserFollowCard = ({user}) => {
             />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
-                <Typography component="div" variant="h5">
-                    {user.first_name} {user.last_name}
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary" component="div">
-                    @{user.username}
-                </Typography>
-                
-            <Button color='success' size='small'>{user.first_name}'s Sites</Button>
+                    <Typography component="div" variant="h5">
+                        {user.first_name} {user.last_name}
+                    </Typography>
+                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                        @{user.username}
+                    </Typography>
+                    <Button color='success' size='small'>{user.first_name}'s Sites</Button>
                 </CardContent>
-            <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-            <IconButton aria-label="previous">
-                <PersonAddIcon/>
-            </IconButton>
-            <IconButton aria-label="play/pause">
-                <PersonRemoveIcon/>
-            </IconButton>
-            </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+                    <Button variant="contained" onClick={handleFollow}> {isFollowing ? "Unfollow" : "Follow"}</Button>
+                </Box>
             </Box>
         </Card>
     </Wrap>
