@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/User";
 
-import {Grid, Typography} from "@mui/material"
+import {Grid, Typography,Box} from "@mui/material"
 import UserFollowCard from "../components/UserFollowCard";
 import UserInfoCard from "../components/UserInfoCard";
 
@@ -11,27 +11,49 @@ const MyProfile = () => {
     const [user, setUser]=useContext(UserContext)
 
   return (
-    <Grid 
-        container spacing={4}
-        justifyContent='center'
-        alignItems="center"
+    <Box
+      overflow="auto"
+      height="100vh"
+      flexDirection="column"
+      display="flex"
+      // bgcolor="blue"
+      // border="2px solid yellow"
     >
-        <Grid item xs={4}></Grid>
-        <Grid item xs={4}>
-            <UserInfoCard></UserInfoCard>
+      <Box p={2}>
+        <Grid container justifyContent='center' alignItems='center'>
+            <Grid item xs={4}>
+                  <UserInfoCard></UserInfoCard>
+            </Grid>
         </Grid>
-        <Grid item xs={4}></Grid>
-        <Grid item xs={5} textAlign='center'>
-            <Typography variant='h4'> Followers</Typography>
-            {user.followers.map((follower)=>(
-                <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
-            ))}
+      </Box>
+      <Box
+        overflow="auto"
+        flex={1}
+        // border="2px solid red"
+        flexDirection="column"
+        display="flex"
+        p={2}
+      >
+        <Grid style={{ display: "flex", flex: 1 }} container spacing={3}>
+          <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
+            <Box  flex={1} textAlign='center'>
+              <Typography variant='h4'>Followers</Typography>
+              {user.followers.map((follower)=>(
+                  <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
+              ))}
+            </Box>
+          </Grid>
+          <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
+            <Box  flex={1} textAlign='center'>
+              <Typography variant='h4'>States</Typography>
+              {user.followers.map((follower)=>(
+                  <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
+              ))}
+            </Box>
+          </Grid>
         </Grid>
-        <Grid item xs={2}></Grid>
-        <Grid item xs={5}>Hello</Grid>
-        
-      
-    </Grid>
+      </Box>
+    </Box>
   )
 }
 

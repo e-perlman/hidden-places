@@ -23,9 +23,9 @@ const Following = () => {
     >
         <Grid item xs={1}></Grid>
         <Grid item xs={4} textAlign='center'>
-            <Typography variant='h4'> Followers</Typography>
+            <Typography variant='h4'> Following</Typography>
             <UserSearch></UserSearch>
-            {user.followers.map((follower)=>(
+            {user.followees.map((follower)=>(
                 <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
             ))}
         </Grid>
@@ -33,7 +33,7 @@ const Following = () => {
         <Grid item xs={4} textAlign='center'>
             <Typography variant='h4'> All Users</Typography>
             <UserSearch></UserSearch>
-            {allUsers.map((follower)=>(
+            {user.not_following.map((follower)=>(
                 <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
             ))}
         </Grid>
