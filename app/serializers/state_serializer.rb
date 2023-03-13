@@ -1,3 +1,3 @@
 class StateSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :climate, :known_for, :state_pic
 end
