@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
  
+  resources :campsites
   resources :states
     post "/signup", to: "users#create"
     post "/login", to: "sessions#create"

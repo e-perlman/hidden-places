@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_10_040615) do
+ActiveRecord::Schema.define(version: 2023_03_10_041021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "campsites", force: :cascade do |t|
+    t.string "name"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
+    t.integer "user_id"
+    t.integer "state_id"
+    t.string "access_type"
+    t.string "land_type"
+    t.integer "safety"
+    t.integer "quietness"
+    t.integer "privacy"
+    t.integer "scenery"
+    t.integer "accessibility"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"

@@ -9,6 +9,7 @@
 
 User.destroy_all
 Relationship.destroy_all
+Campsite.destroy_all
 
 User.create!([
     {   username: 'eperlman',
@@ -29,7 +30,7 @@ User.create!([
     }
 ])
 
-(1..20).each do
+(1..10).each do
     User.create!( 
         username: Faker::Internet.username(specifier: 5..10),
         first_name: Faker::Name.unique.first_name ,
@@ -42,8 +43,38 @@ User.create!([
 end
 
 users=User.all
-User.first.followers << users[1..19]
+User.first.followers << users[1..9]
 User.first.followees<< [User.second]
+
+Campsite.create!(
+name: 'Waterfall',
+user_id: 3,
+state_id: 1,
+latitude: 45.539490,
+longitude: -122.217163,
+access_type: 'Drive_In',
+land_type: 'Public',
+safety: 5,
+quietness: 2,
+privacy: 1,
+scenery: 4,
+accessibility: 5)
+
+Campsite.create!(
+name: 'Waterfall',
+user_id: 3,
+state_id: 1,
+latitude: 45.539490,
+longitude: -122.217163,
+access_type: 'Drive',
+land_type: 'Public',
+safety: 0,
+quietness: 2,
+privacy: 1,
+scenery: 4,
+accessibility: 5)
+
+
 
 
 p "Done Seeding!"
