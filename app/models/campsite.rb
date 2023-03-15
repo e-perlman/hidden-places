@@ -2,9 +2,8 @@ class Campsite < ApplicationRecord
     belongs_to :user
     belongs_to :state
 
-    validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
-    message: "Only allows letters" }
-
+    validates :name, presence: true
+    
     validates :latitude, presence: true, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
 
     validates :longitude, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }

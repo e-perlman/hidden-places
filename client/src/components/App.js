@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import MyProfile from '../pages/MyProfile';
 import Following from '../pages/Following'
 import MySites from '../pages/MySites';
+import NewCampsite from '../pages/NewCampsite';
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path="/my_sites">
             <MySites></MySites>
+          </Route>
+          <Route path="/new_site">
+            <NewCampsite></NewCampsite>
           </Route>
           <Route path='/'>
             <Home user={user}></Home>

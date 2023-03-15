@@ -28,7 +28,7 @@ const NavBar = () => {
     <Wrapper>
       <Logo>Hidden Places</Logo>
       <Nav>
-        <Button color="primary"> Add New Site</Button>
+        <Button color="primary" as={Link} to="/new_site"> Add New Site</Button>
         <Button color="secondary" onClick={handleLogout}> Logout</Button>
       </Nav>
     </Wrapper>
@@ -49,6 +49,7 @@ const NavBar = () => {
         <Tab value='three' component={Link} label='My Sites' to="/my_sites"/>
         <Tab value='four' component={Link} label='Sites Feed' to="/feed"/>
         <Tab value='five' component={Link} label='Following' to="/following"/>
+        {/* <Tab value='six' component={Link} label='New Campsite' to="/new_site"/> */}
       </Tabs>
       </TabWrap>
     </>
