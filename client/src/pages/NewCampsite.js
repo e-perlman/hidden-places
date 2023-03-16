@@ -54,8 +54,8 @@ const NewCampsite = () => {
             body: JSON.stringify(campsiteInfo),
           }).then((r) => {
             if (r.ok) {
-              r.json().then((product) => {
-                console.log(product)
+              r.json().then((campsite) => {
+                console.log(campsite)
                 setCampsiteInfo({
                     name:'',
                     latitude:'',
@@ -81,7 +81,7 @@ const NewCampsite = () => {
       <Grid container sx={{justifyContent: 'center'}}>
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "center" }}>
             <ThemeProvider theme={darkTheme}>
-                <Item sx={{p:2}}>
+                <Item elevation={6} sx={{p:2}}>
                     <form onSubmit={handleSubmit}>
                         <Stack spacing={3} direction="column">
                             <TextField id='campsite-name'

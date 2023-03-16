@@ -6,6 +6,7 @@ import App from './components/App';
 import { createGlobalStyle } from "styled-components";
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/User';
+import { StatesProvider } from './context/States';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -30,7 +31,9 @@ ReactDOM.render(
     <React.StrictMode>
       <GlobalStyle/>
       <UserProvider>
+        <StatesProvider>
         <App />
+        </StatesProvider>
       </UserProvider>
     </React.StrictMode>
   </BrowserRouter>,
