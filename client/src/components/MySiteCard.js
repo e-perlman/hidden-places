@@ -15,18 +15,7 @@ const MySiteCard = ({campsite}) => {
   const [editCampsite,setEditCampsite]=useState(false)
   const [errors,setErrors]=useState([])
   const [campsiteInfo, setCampsiteInfo]=useState(campsite)
-
-  console.log(states)
   
-
-  // useEffect(() => {
-  //   fetch("/states").then((r) =>{
-  //     if (r.ok) {
-  //       r.json().then((states)=>setStates(states))
-  //     }
-  //   })
-  // }, []);
-
   const handleCampsiteDelete = ()=>{
     fetch(`/campsites/${campsite.id}`, {
         method: "DELETE",

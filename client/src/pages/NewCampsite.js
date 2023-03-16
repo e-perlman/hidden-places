@@ -1,4 +1,5 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
+import { StatesContext } from '../context/States';
 import { Grid, Stack, FormControl, FormLabel, FormControlLabel, Typography, RadioGroup, Radio, MenuItem, Select, Rating, Paper, Button,TextField,InputAdornment,InputLabel, FormGroup, Box} from '@mui/material'
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Error from '../styles/Error'
@@ -13,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 const NewCampsite = () => {
-    const [states, setStates]=useState([])
+    const [states, setStates]=useContext(StatesContext)
     const [errors,setErrors]=useState([])
     const [campsiteInfo, setCampsiteInfo]=useState({
         name:'',
@@ -35,13 +36,7 @@ const NewCampsite = () => {
             [e.target.name]:e.target.value
         })
     }
-    useEffect(() => {
-        fetch("/states").then((r) =>{
-          if (r.ok) {
-            r.json().then((states)=>setStates(states))
-          }
-        })
-    }, []);
+
 
     const handleSubmit= e =>{
         e.preventDefault()
