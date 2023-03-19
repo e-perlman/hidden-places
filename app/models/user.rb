@@ -29,4 +29,9 @@ class User < ApplicationRecord
         @not_following = @users - @following-[self]
     end
 
+    def feed
+        @following=self.followees
+        @campsites=@following.map{|followee| followee.campsites}.flatten
+    end
+
 end

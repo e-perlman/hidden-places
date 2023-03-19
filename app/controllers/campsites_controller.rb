@@ -7,6 +7,12 @@ class CampsitesController < ApplicationController
         campsites=user.followees.map{|followee| followee.campsites}
         render json: campsites.flatten, status: :ok
     end
+
+    def my_sites
+        user=User.find(params[:user_id])
+        campsites=user.campsites
+        render json: campsites, status: :ok
+    end
     
     def create
         user=find_user
@@ -30,11 +36,11 @@ class CampsitesController < ApplicationController
     private
 
     def find_user
-        User.find_by(id:[session[:user_id]])
+        User.find(session[:user_id])
     end
 
     def find_campsite
-        user=User.find_by(id:[session[:user_id]])
+        user=User.find(session[:user_id])
         user.campsites.find(params[:id])
     end
 

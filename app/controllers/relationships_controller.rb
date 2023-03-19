@@ -3,7 +3,6 @@ class RelationshipsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def create
-        
         relationship=Relationship.create!(follower_id: session[:user_id], followee_id: relationship_params[:followee_id])
         render json: relationship, status: :created
     end
