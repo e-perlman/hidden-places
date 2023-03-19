@@ -5,15 +5,6 @@ import UserFollowCard from '../components/UserFollowCard'
 import UserSearch from "../components/UserSearch";
 
 const Following = () => {
-    const [allUsers, setAllUsers]=useState([])
-
-    useEffect(() => {
-        fetch("/users").then((r) =>{
-          if (r.ok) {
-            r.json().then((users)=>setAllUsers(users))
-          }
-        })
-      }, []);
 
     const [user, setUser]=useContext(UserContext)
 

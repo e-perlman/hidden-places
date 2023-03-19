@@ -12,16 +12,24 @@ class UsersController < ApplicationController
     def show
         user=User.find_by(id:session[:user_id])
         if user
-            render json: user, serializer: CurrentUserSerializer, include: ['followers','followees','campsites'], status: :created
+            render json: user, serializer: CurrentUserSerializer, status: :created
+            # include: ['followers','followees','campsites'],
         else
             render json: {error: "Not authorized"}, status: :unauthorized
         end
     end
 
-    # def index
-    #     users=User.all
-    #     render json: users, status: :ok
-    # end
+    def not_following
+        user=User.find_by(id:session[:user_id])
+        if user
+            users=User.all
+            following=user.followees
+            not_following= users-following-[user]
+            render json: not_following, status: :created
+        else
+            render json: {error: "Not authorized"}, status: :unauthorized
+        end
+    end
 
     private
 

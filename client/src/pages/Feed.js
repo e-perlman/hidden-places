@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { UserContext } from "../context/User";
+import { FeedContext } from "../context/Feed";
 import {Box, Grid, Typography} from '@mui/material'
 import MySiteCard from '../components/MySiteCard'
 import UserSiteCard from "../components/UserSiteCard";
+import UserSearch from "../components/UserSearch";
 
 const Feed = () => {
-    const [campsites, setCampsites]=useState([])
+    const [user,setUser]=useContext(UserContext)
+    const [feed, setFeed]=useContext(FeedContext)
 
-    useEffect(() => {
-        fetch("/feed").then((r) => {
-          if (r.ok) {
-            r.json().then((campsites) => setCampsites(campsites));
-          }
-        });
-    }, []);
 
-    if (campsites.length<1) return <Typography> No Campsites!</Typography>
+    if (feed.length<1) return <Typography> No Feed!</Typography>
 
   return (
     <Box
@@ -44,7 +40,7 @@ const Feed = () => {
         <Grid tyle={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
           <Box flex={1} border='2px solid red'>
             <Typography variant='h4'>Feed</Typography>
-            {campsites.map((campsite)=>(
+            {feed.map((campsite)=>(
                 <UserSiteCard key={campsite.id} campsite={campsite}></UserSiteCard>
             ))}
           </Box>

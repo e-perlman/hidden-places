@@ -15,8 +15,6 @@ function App() {
 
   const [user, setUser]=useContext(UserContext)
 
-  console.log(user)
-
   if (!user) return <Auth/>
 
 

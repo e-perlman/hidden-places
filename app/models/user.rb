@@ -23,15 +23,15 @@ class User < ApplicationRecord
     validates :bio, length: { maximum: 1000,
     too_long: "%{count} characters is the maximum allowed" }, allow_blank: true
 
-    def not_following
-        @following = self.followees
-        @users = User.all
-        @not_following = @users - @following-[self]
-    end
+    # def not_following
+    #     @following = self.followees
+    #     @users = User.all
+    #     @not_following = @users - @following-[self]
+    # end
 
-    def feed
-        @following=self.followees
-        @campsites=@following.map{|followee| followee.campsites}.flatten
-    end
+    # def feed
+    #     @following=self.followees
+    #     @campsites=@following.map{|followee| followee.campsites}.flatten
+    # end
 
 end

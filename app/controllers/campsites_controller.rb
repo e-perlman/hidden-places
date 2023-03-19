@@ -4,8 +4,9 @@ class CampsitesController < ApplicationController
 
     def feed
         user=find_user
-        campsites=user.followees.map{|followee| followee.campsites}
-        render json: campsites.flatten, status: :ok
+        followee_ids=user.followees.map{|followee| followee.id}
+        campsites=Campsite.includes(:user).filter{|campsite| followee_ids.include?(campsite.user_id)}
+        render json: campsites, status: :ok
     end
 
     def my_sites

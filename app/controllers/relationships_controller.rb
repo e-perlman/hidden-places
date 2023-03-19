@@ -4,7 +4,9 @@ class RelationshipsController < ApplicationController
 
     def create
         relationship=Relationship.create!(follower_id: session[:user_id], followee_id: relationship_params[:followee_id])
-        render json: relationship, status: :created
+        followee=User.find(relationship_params[:followee_id])
+        followee_campsites=followee.campsites
+        render json: followee_campsites, status: :created
     end
 
     def destroy

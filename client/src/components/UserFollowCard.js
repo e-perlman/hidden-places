@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/User";
+import { FeedContext } from "../context/Feed";
 import {Card, CardMedia, Button, Typography, CardContent, Box} from '@mui/material'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
@@ -8,10 +9,10 @@ import styled from "styled-components";
 
 const UserFollowCard = ({user}) => {
     const [currentUser, setCurrentUser]=useContext(UserContext)
+    const [feed, setFeed]=useContext(FeedContext)
 
     const [isFollowing, setIsFollowing] = useState(false)
 
-    
     useEffect(() => {
         if (currentUser.followees.find(followee => followee.id === user.id)) {
             setIsFollowing(true)
@@ -44,9 +45,9 @@ const UserFollowCard = ({user}) => {
               })
                 .then((r) => {
                   if (r.ok) {
-                    r.json().then((data) => {
+                    r.json().then((followee_campsites) => {
                       setIsFollowing(true)
-                      onFollow(user)
+                      onFollow(user,followee_campsites)
                     })
                   } else {
                     r.json().then((err) => console.log(err.errors))
@@ -55,13 +56,18 @@ const UserFollowCard = ({user}) => {
         )
     }
 
-    const onFollow = (user) => {
+    
+
+    const onFollow = (user,campsites) => {
         const notFollowing=currentUser.not_following.filter(followee=>followee.id!==user.id)
-        setCurrentUser({...currentUser, followees:[...currentUser.followees,user],not_following:notFollowing})
+        setFeed(...feed,campsites)
+        setCurrentUser({...currentUser, followees:[...currentUser.followees,user], not_following:notFollowing})
     }
 
     const onUnfollow= (user) => {
         const updatedFollowees=currentUser.followees.filter(followee=>followee.id!==user.id)
+        const updatedFeed=feed.filter(campsite=>campsite.user_id!==user.id)
+        setFeed(updatedFeed)
         setCurrentUser({...currentUser, followees:updatedFollowees, not_following:[...currentUser.not_following,user]})
     }
 

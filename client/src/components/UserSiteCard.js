@@ -9,7 +9,6 @@ const UserSiteCard = ({campsite}) => {
         day: "2-digit",
         year: "numeric"
     });
-
     const [errors,setErrors]=useState([])
   return (
     <Grid item xs={12} p={2} sx={{ width: "100%" }}>
