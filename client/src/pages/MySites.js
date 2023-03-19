@@ -5,6 +5,10 @@ import MySiteCard from '../components/MySiteCard'
 
 const MySites = () => {
   const [user, setUser]=useContext(UserContext)
+
+  console.log(user)
+
+  // if (!user | user.campsites.length<1) return <Typography> No Campsites!</Typography>
   return (
     <Box
       overflow="auto"

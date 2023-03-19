@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
  
-  resources :campsites
+  resources :campsites, only: [:create, :update, :destroy]
+  get "/feed", to: "campsites#feed"
   resources :states
     post "/signup", to: "users#create"
     post "/login", to: "sessions#create"

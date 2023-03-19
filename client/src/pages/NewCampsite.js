@@ -1,5 +1,6 @@
 import React,{useState, useEffect, useContext} from 'react'
 import { StatesContext } from '../context/States';
+import { UserContext } from "../context/User";
 import { Grid, Stack, FormControl, FormLabel, FormControlLabel, Typography, RadioGroup, Radio, MenuItem, Select, Rating, Paper, Button,TextField,InputAdornment,InputLabel, FormGroup, Box} from '@mui/material'
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Error from '../styles/Error'
@@ -14,6 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 const NewCampsite = () => {
+    const [user, setUser]=useContext(UserContext)
     const [states, setStates]=useContext(StatesContext)
     const [errors,setErrors]=useState([])
     const [campsiteInfo, setCampsiteInfo]=useState({
@@ -37,7 +39,6 @@ const NewCampsite = () => {
         })
     }
 
-
     const handleSubmit= e =>{
         e.preventDefault()
         setErrors([]);
@@ -50,7 +51,7 @@ const NewCampsite = () => {
           }).then((r) => {
             if (r.ok) {
               r.json().then((campsite) => {
-                console.log(campsite)
+                setUser({...user, campsites:[...user.campsites,campsite]})
                 setCampsiteInfo({
                     name:'',
                     latitude:'',
@@ -70,7 +71,6 @@ const NewCampsite = () => {
             }
           });
     }
-
 
   return (
       <Grid container sx={{justifyContent: 'center'}}>

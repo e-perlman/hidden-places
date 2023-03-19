@@ -9,12 +9,13 @@ import MyProfile from '../pages/MyProfile';
 import Following from '../pages/Following'
 import MySites from '../pages/MySites';
 import NewCampsite from '../pages/NewCampsite';
+import Feed from '../pages/Feed'
 
 function App() {
 
   const [user, setUser]=useContext(UserContext)
 
-
+  console.log(user)
 
   if (!user) return <Auth/>
 
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/new_site">
             <NewCampsite></NewCampsite>
+          </Route>
+          <Route path="/feed">
+            <Feed></Feed>
           </Route>
           <Route path='/'>
             <Home user={user}></Home>
