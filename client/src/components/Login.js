@@ -1,19 +1,33 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import Error from "../styles/Error"
 import Button from "../styles/Button"
 import { FormGroup, Label, Input, Message } from "../styles/Forms"
 import { useHistory } from "react-router";
 import { UserContext } from "../context/User";
+import { FeedContext } from "../context/Feed";
 
 
 const Login = () => {
     const [user, setUser]=useContext(UserContext)
+    const [feed,setFeed]=useContext(FeedContext)
+    const [loggedIn, setLoggedIn]=useState(false)
     const [userInfo, setUserInfo]=useState({
         username:'',
         password:''
     })
     const [errors,setErrors]=useState([])
     const history = useHistory();
+
+    useEffect(() => {
+        if (loggedIn)
+        fetch("/feed").then((r) => {
+          if (r.ok) {
+            r.json().then((feed) => {
+              console.log(feed)
+              setFeed(feed)});
+          }
+        });
+    }, [loggedIn]);
 
     const handleSubmit= e =>{
         e.preventDefault()
@@ -30,9 +44,10 @@ const Login = () => {
           }).then((r) => {
             if (r.ok) {
               r.json().then((user) => {
+                setLoggedIn(true)
                 setUser(user)
+                history.push("/");
               });
-              history.push("/");
             } else {
               
               r.json().then((err) => {

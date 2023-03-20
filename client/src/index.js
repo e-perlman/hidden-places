@@ -7,7 +7,7 @@ import { createGlobalStyle } from "styled-components";
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/User';
 import { StatesProvider } from './context/States';
-import {FeedProvider} from './context/Feed'
+import { FeedProvider } from './context/Feed'
 
 const GlobalStyle = createGlobalStyle`
   *,

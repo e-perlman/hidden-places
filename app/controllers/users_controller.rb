@@ -13,7 +13,6 @@ class UsersController < ApplicationController
         user=User.find_by(id:session[:user_id])
         if user
             render json: user, serializer: CurrentUserSerializer, status: :created
-            # include: ['followers','followees','campsites'],
         else
             render json: {error: "Not authorized"}, status: :unauthorized
         end

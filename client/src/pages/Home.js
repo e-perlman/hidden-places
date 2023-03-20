@@ -1,8 +1,18 @@
-import React, {useContext} from 'react'
+import React, {useContext,useEffect} from 'react'
+import { FeedContext } from '../context/Feed'
 import { UserContext } from '../context/User'
 
 const Home = ({user}) => {
-  // const [user, setUser]=useContext(UserContext)
+  const [feed,setFeed]=useContext(FeedContext)
+
+  // useEffect(() => {
+        
+  //   fetch("/feed").then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((feed) => setFeed(feed));
+  //     }
+  //   });
+  // }, []);
 
   return (
     <div>

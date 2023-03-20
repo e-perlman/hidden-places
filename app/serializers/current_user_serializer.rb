@@ -4,10 +4,16 @@ class CurrentUserSerializer < ActiveModel::Serializer
   has_many :followees
   has_many :campsites
 
-  def not_following
-    @following = object.followees
-    @users = User.all
-    @not_following = @users - @following-[object]
-end
+  
 
+#   def not_following
+#     @following = object.followees
+#     # @users = User.all
+#     # @not_following = @users - @following-[object]
+# end
+# def feed
+#   # followee_ids=object.followees.map{|followee| followee.id}
+#   # campsites=Campsite.includes(:user).filter{|campsite| followee_ids.include?(campsite.user_id)}
+#   campsites=Campsite.includes(:user)
+# end
 end

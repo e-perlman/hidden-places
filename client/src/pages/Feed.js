@@ -10,8 +10,7 @@ const Feed = () => {
     const [user,setUser]=useContext(UserContext)
     const [feed, setFeed]=useContext(FeedContext)
 
-
-    if (feed.length<1) return <Typography> No Feed!</Typography>
+    if (!feed) return <Typography> Loading</Typography>
 
   return (
     <Box
