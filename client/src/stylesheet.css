@@ -1,0 +1,16 @@
+
+.pin {
+  display: flex;
+  align-items: center;
+  width: 180px;
+}
+
+.pin-icon {
+  font-size: 6rem;
+}
+
+.pin-text {
+  font-size: 1.5em;
+  color:black;
+  background-color: aliceblue;
+}

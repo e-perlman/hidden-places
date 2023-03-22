@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { UserContext } from "../context/User";
 import {Box, Grid, Typography} from '@mui/material'
 import MySiteCard from '../components/MySiteCard'
+import Map from "../components/Map";
+import '../stylesheet.css'
 
 const MySites = () => {
   const [user, setUser]=useContext(UserContext)
-
-  console.log(user)
 
   // if (!user | user.campsites.length<1) return <Typography> No Campsites!</Typography>
   return (
@@ -41,7 +41,9 @@ const MySites = () => {
               ))}
             </Box>
           </Grid>
-          <Grid item xs={6}></Grid>
+          <Grid item xs={6}>
+                <Map campsites={user.campsites}/>
+          </Grid>
         </Grid>
       </Box>
     </Box>

@@ -30,6 +30,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def key
+        key=Rails.application.credentials.dig(:maps)
+        render json: key
+    end
+
     private
 
     def user_params

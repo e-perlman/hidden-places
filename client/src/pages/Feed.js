@@ -5,6 +5,7 @@ import {Box, Grid, Typography} from '@mui/material'
 import MySiteCard from '../components/MySiteCard'
 import UserSiteCard from "../components/UserSiteCard";
 import UserSearch from "../components/UserSearch";
+import Map from "../components/Map"
 
 const Feed = () => {
     const [user,setUser]=useContext(UserContext)
@@ -23,7 +24,7 @@ const Feed = () => {
     <Box p={2}>
       <Grid container justifyContent='center'>
         <Grid item xs={10}>
-          {/* filter */}
+          
         </Grid>
       </Grid>
     </Box>
@@ -44,7 +45,9 @@ const Feed = () => {
             ))}
           </Box>
         </Grid>
-        <Grid item xs={6}></Grid>
+        <Grid item xs={6}>
+          <Map campsites={feed}/>
+        </Grid>
       </Grid>
     </Box>
   </Box>
