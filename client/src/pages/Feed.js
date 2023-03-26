@@ -6,10 +6,12 @@ import MySiteCard from '../components/MySiteCard'
 import UserSiteCard from "../components/UserSiteCard";
 import UserSearch from "../components/UserSearch";
 import Map from "../components/Map"
+import CampsiteFilter from "../components/CampsiteFilter";
 
 const Feed = () => {
     const [user,setUser]=useContext(UserContext)
     const [feed, setFeed]=useContext(FeedContext)
+    const [filtered,setFiltered]=useState(feed)
 
     if (!feed) return <Typography> Loading</Typography>
 
@@ -23,8 +25,8 @@ const Feed = () => {
   >
     <Box p={2}>
       <Grid container justifyContent='center'>
-        <Grid item xs={10}>
-          
+        <Grid item xs={7}>
+        <CampsiteFilter campsites={feed} setFiltered={setFiltered}></CampsiteFilter>
         </Grid>
       </Grid>
     </Box>
@@ -40,13 +42,13 @@ const Feed = () => {
         <Grid tyle={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
           <Box flex={1} border='2px solid red'>
             <Typography variant='h4'>Feed</Typography>
-            {feed.map((campsite)=>(
+            {filtered.map((campsite)=>(
                 <UserSiteCard key={campsite.id} campsite={campsite}></UserSiteCard>
             ))}
           </Box>
         </Grid>
         <Grid item xs={6}>
-          <Map campsites={feed}/>
+          <Map campsites={filtered}/>
         </Grid>
       </Grid>
     </Box>
