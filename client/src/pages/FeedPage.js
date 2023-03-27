@@ -9,12 +9,17 @@ import Map from "../components/Map"
 import CampsiteFilter from "../components/CampsiteFilter";
 
 const Feed = () => {
-    const [user,setUser]=useContext(UserContext)
     const [feed, setFeed]=useContext(FeedContext)
-    const [filtered,setFiltered]=useState(feed)
+    const [filtered, setFiltered]=useState(null)
 
+    let campsites=[]
+    if (!filtered){
+      campsites=feed
+    }
+    else campsites=filtered
+     
     if (!feed) return <Typography> Loading</Typography>
-
+    
   return (
     <Box
     overflow="auto"
@@ -42,13 +47,13 @@ const Feed = () => {
         <Grid tyle={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
           <Box flex={1} border='2px solid red'>
             <Typography variant='h4'>Feed</Typography>
-            {filtered.map((campsite)=>(
+            {campsites.map((campsite)=>(
                 <UserSiteCard key={campsite.id} campsite={campsite}></UserSiteCard>
             ))}
           </Box>
         </Grid>
         <Grid item xs={6}>
-          <Map campsites={filtered}/>
+          <Map campsites={campsites}/>
         </Grid>
       </Grid>
     </Box>

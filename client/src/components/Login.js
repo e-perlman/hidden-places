@@ -5,11 +5,13 @@ import { FormGroup, Label, Input, Message } from "../styles/Forms"
 import { useHistory } from "react-router";
 import { UserContext } from "../context/User";
 import { FeedContext } from "../context/Feed";
+import { StatesContext } from "../context/States";
 
 
 const Login = () => {
     const [user, setUser]=useContext(UserContext)
     const [feed,setFeed]=useContext(FeedContext)
+    const [states,setStates]=useContext(StatesContext)
     const [loggedIn, setLoggedIn]=useState(false)
     const [userInfo, setUserInfo]=useState({
         username:'',
@@ -20,13 +22,18 @@ const Login = () => {
 
     useEffect(() => {
         if (loggedIn)
-        fetch("/feed").then((r) => {
-          if (r.ok) {
-            r.json().then((feed) => {
-              console.log(feed)
-              setFeed(feed)});
-          }
-        });
+          fetch("/feed").then((r) => {
+            if (r.ok) {
+              r.json().then((feed) => {
+                console.log(feed)
+                setFeed(feed)});
+            }
+          });
+          fetch("/states").then((r) => {
+            if (r.ok) {
+              r.json().then((states) => setStates(states));
+            }
+          });
     }, [loggedIn]);
 
     const handleSubmit= e =>{

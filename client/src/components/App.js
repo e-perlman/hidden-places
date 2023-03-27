@@ -9,7 +9,7 @@ import MyProfile from '../pages/MyProfile';
 import Following from '../pages/Following'
 import MySites from '../pages/MySites';
 import NewCampsite from '../pages/NewCampsite';
-import Feed from '../pages/Feed'
+import Feed from '../pages/FeedPage'
 
 function App() {
 

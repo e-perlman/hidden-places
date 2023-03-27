@@ -4,7 +4,7 @@ import { StatesContext } from '../context/States';
 import {Grid, Card, Box, Avatar, Stack, FormControl, FormLabel, FormControlLabel, Button, ButtonGroup,InputLabel,CardContent, Typography, Divider, List, ListItem, Rating, TextField, RadioGroup, Radio, MenuItem, Select, InputAdornment, FormGroup} from '@mui/material'
 import Error from '../styles/Error'
 
-const MySiteCard = ({campsite}) => {
+const MySiteCard = ({campsite, setFiltered}) => {
   const formatter = new Intl.DateTimeFormat("en-US", {
     month: "long",
     day: "2-digit",
@@ -65,6 +65,7 @@ const MySiteCard = ({campsite}) => {
     });
     setUser({...user, campsites:updatedCampsites})
     setEditCampsite(false)
+    setFiltered(updatedCampsites)
   }
 
   return (

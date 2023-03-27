@@ -47,6 +47,11 @@ const CampsiteFilter = ({setFiltered,campsites}) => {
         if(campsiteFilter.state_id==='All') return true
         return campsite.state_id===campsiteFilter.state_id
       })
+      .filter(campsite=> campsite.safety>= campsiteFilter.safety)
+      .filter(campsite=> campsite.quietness>= campsiteFilter.quietness)
+      .filter(campsite=> campsite.privacy>= campsiteFilter.privacy)
+      .filter(campsite=> campsite.scenery>= campsiteFilter.scenery)
+      .filter(campsite=> campsite.accessibility>= campsiteFilter.accessibility)
     setFiltered(filtered)
   }
 
@@ -65,7 +70,7 @@ const CampsiteFilter = ({setFiltered,campsites}) => {
     )
     setFiltered(campsites)
   } 
-
+  if (!states) return <Typography>Loading...</Typography>
   return (
     <ThemeProvider theme={darkTheme}>
       <Item elevation={6} sx={{p:0.5, textAlign:'center'}}>

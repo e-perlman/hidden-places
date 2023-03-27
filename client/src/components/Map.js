@@ -21,11 +21,16 @@ const Map = ({campsites}) => {
     });
 
     useEffect(() => {
+      let cancel = false;
         fetch("/mapskey").then((r) => {
+          if (cancel) return
           if (r.ok) {
             r.json().then((key) => setKey(key.private_key));
           }
         });
+        return () => { 
+          cancel = true;
+        }
       }, []);
 
     const defaultProps = {

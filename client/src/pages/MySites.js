@@ -10,7 +10,7 @@ const MySites = () => {
   const [user, setUser]=useContext(UserContext)
   const [filtered,setFiltered]=useState(user.campsites)
 
-  
+  if (!user) return <Typography> Loading...</Typography>
   return (
     <Box
       overflow="auto"
@@ -39,7 +39,7 @@ const MySites = () => {
             <Box flex={1} border='2px solid red'>
               <Typography variant='h4'>My Sites</Typography>
               {filtered.map((campsite)=>(
-                  <MySiteCard key={campsite.id} campsite={campsite}></MySiteCard>
+                  <MySiteCard key={campsite.id} campsite={campsite} setFiltered={setFiltered}></MySiteCard>
               ))}
             </Box>
           </Grid>
