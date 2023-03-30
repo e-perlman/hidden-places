@@ -26,9 +26,12 @@ const NavBar = () => {
   return (
     <>
     <Wrapper>
+    <NavLeft>
+        <Button as={Link} to="/new_state"> Add New State or Territory</Button>
+      </NavLeft>
       <Logo>Hidden Places</Logo>
       <Nav>
-        <Button color="primary" as={Link} to="/new_site"> Add New Site</Button>
+        <Button color="primary" as={Link} to="/new_site"> Add New Campsite</Button>
         <Button color="secondary" onClick={handleLogout}> Logout</Button>
       </Nav>
     </Wrapper>
@@ -61,6 +64,13 @@ const Wrapper = styled.header`
   justify-content: center;
   align-items: center;
   padding: 20px;
+`;
+
+const NavLeft = styled.nav`
+  display: flex;
+  gap: 4px;
+  position: absolute;
+  left: 8px;
 `;
 
 

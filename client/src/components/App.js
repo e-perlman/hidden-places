@@ -10,6 +10,7 @@ import Following from '../pages/Following'
 import MySites from '../pages/MySites';
 import NewCampsite from '../pages/NewCampsite';
 import Feed from '../pages/FeedPage'
+import NewState from '../pages/NewState'
 
 function App() {
 
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/new_site">
             <NewCampsite></NewCampsite>
+          </Route>
+          <Route path="/new_state">
+            <NewState></NewState>
           </Route>
           <Route path="/feed">
             <Feed></Feed>

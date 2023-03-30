@@ -5,5 +5,10 @@ class State < ApplicationRecord
     validates :name, presence: true, format: { with: /\A[a-zA-Z]+\z/,
     message: "Only allows letters" }
 
+    validates :climate, presence: true
+
+    validates :known_for, presence: true
+
+    validates :state_pic, presence: true
 
 end
