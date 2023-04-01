@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import {Link} from 'react-router-dom'
 import { UserContext } from "../context/User";
 import { FeedContext } from "../context/Feed";
 import {Card, CardMedia, Button, Typography, CardContent, Box} from '@mui/material'
@@ -86,7 +87,7 @@ const UserFollowCard = ({user}) => {
                     <Typography variant="subtitle1" color="text.secondary" component="div">
                         @{user.username}
                     </Typography>
-                    <Button color='success' size='small'>{user.first_name}'s Sites</Button>
+                    <Button component={Link} to={`/following/${user.id}`} color='success' size='small'>{user.first_name}'s Sites</Button>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
                     <Button variant="contained" onClick={handleFollow}> {isFollowing ? "Unfollow" : "Follow"}</Button>

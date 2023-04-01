@@ -1,6 +1,6 @@
 // import '../App.css';
 import React, { useEffect, useState, useContext } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { UserContext } from '../context/User'
 import Auth from '../pages/Auth';
 import Home from '../pages/Home';
@@ -11,10 +11,13 @@ import MySites from '../pages/MySites';
 import NewCampsite from '../pages/NewCampsite';
 import Feed from '../pages/FeedPage'
 import NewState from '../pages/NewState'
+import UserSitePage from "../pages/UserSitePage";
 
 function App() {
-
   const [user, setUser]=useContext(UserContext)
+
+  const match=useRouteMatch();
+
 
   if (!user) return <Auth/>
 
@@ -24,6 +27,9 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Switch>
+        <Route exact path='/following/:user_id'>
+          <UserSitePage></UserSitePage>
+        </Route>
           <Route path="/my_profile">
             <MyProfile></MyProfile>
           </Route>
