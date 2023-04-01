@@ -39,6 +39,13 @@ const NewCampsite = () => {
         })
     }
 
+    const updateStates=(newCampsite)=> {
+        const campsiteStateIds=user.campsites.map(site=>site.state_id)
+        if (campsiteStateIds.includes(newCampsite.state_id)){console.log("oops")}
+            
+        else setUser({...user, states:[...user.states,newCampsite.state]})
+      }
+
     const handleSubmit= e =>{
         e.preventDefault()
         setErrors([]);
@@ -51,7 +58,8 @@ const NewCampsite = () => {
           }).then((r) => {
             if (r.ok) {
               r.json().then((campsite) => {
-                setUser({...user, campsites:[...user.campsites,campsite]})
+                  setUser({...user, campsites:[...user.campsites,campsite]})
+                  updateStates(campsite)
                 setCampsiteInfo({
                     name:'',
                     latitude:'',

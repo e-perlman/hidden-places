@@ -11,8 +11,6 @@ import StateCard from "../components/StateCard";
 const MyProfile = () => {
     const [user, setUser]=useContext(UserContext)
 
-    console.log(user.states)
-
   return (
     <Box
       overflow="auto"
@@ -38,7 +36,8 @@ const MyProfile = () => {
         p={2}
       >
         <Grid style={{ display: "flex", flex: 1 }} container spacing={3}>
-          <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
+        <Grid item xs={1}></Grid>
+          <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={4}>
             <Box  flex={1} textAlign='center'>
               <Typography variant='h4'>Followers</Typography>
               {user.followers.map((follower)=>(
@@ -46,7 +45,8 @@ const MyProfile = () => {
               ))}
             </Box>
           </Grid>
-          <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
+          <Grid item xs={2}></Grid>
+          <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={4}>
             <Box  flex={1} textAlign='center'>
               <Typography variant='h4'>States</Typography>
               {user.states.map((state)=>(
@@ -54,6 +54,7 @@ const MyProfile = () => {
               ))}
             </Box>
           </Grid>
+          <Grid item xs={1}></Grid>
         </Grid>
       </Box>
     </Box>

@@ -17,11 +17,11 @@ const MySites = () => {
       height="100vh"
       flexDirection="column"
       display="flex"
-      border='2px solid red'
+    
     >
       <Box p={2}>
         <Grid container justifyContent='center'>
-          <Grid item xs={7} border='2px solid red'>
+          <Grid item xs={7}>
             <CampsiteFilter campsites={user.campsites} setFiltered={setFiltered}></CampsiteFilter>
           </Grid>
         </Grid>
@@ -35,17 +35,19 @@ const MySites = () => {
         p={4}
       >
         <Grid container spacing={3} style={{ display: "flex", flex: 1 }}>
-          <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
-            <Box flex={1} border='2px solid red'>
+        <Grid item xs={1}></Grid>
+          <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={5}>
+            <Box flex={1}>
               <Typography variant='h4'>My Sites</Typography>
               {filtered.map((campsite)=>(
                   <MySiteCard key={campsite.id} campsite={campsite} setFiltered={setFiltered}></MySiteCard>
               ))}
             </Box>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={5}>
                 <Map campsites={filtered}/>
           </Grid>
+          <Grid item xs={1}></Grid>
         </Grid>
       </Box>
     </Box>
