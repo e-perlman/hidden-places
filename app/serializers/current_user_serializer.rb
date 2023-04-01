@@ -3,6 +3,7 @@ class CurrentUserSerializer < ActiveModel::Serializer
   has_many :followers
   has_many :followees
   has_many :campsites
+  has_many :states
 
   
 

@@ -15,6 +15,8 @@ const MySiteCard = ({campsite, setFiltered}) => {
   const [editCampsite,setEditCampsite]=useState(false)
   const [errors,setErrors]=useState([])
   const [campsiteInfo, setCampsiteInfo]=useState(campsite)
+
+  const campsiteState=states.find(state=>state.id===campsite.state_id)
   
   const handleCampsiteDelete = ()=>{
     fetch(`/campsites/${campsite.id}`, {
@@ -22,7 +24,9 @@ const MySiteCard = ({campsite, setFiltered}) => {
         }).then((r) => {
         if (r.ok) {
           const updatedCampsites=user.campsites.filter(site=>site.id!==campsite.id)
-          setUser({...user, campsites:updatedCampsites})
+          const updatedStates=updateStates(updatedCampsites)
+          setUser({...user, campsites:updatedCampsites, states:updatedStates})
+          setFiltered(updatedCampsites)
         } else {
             r.json().then((err) => setErrors(err.errors));
         }
@@ -35,6 +39,11 @@ const MySiteCard = ({campsite, setFiltered}) => {
     })
   }
 
+  const updateStates=(updatedCampsites)=> {
+    const campsiteStateIds=updatedCampsites.map(site=>site.state_id)
+    return states.filter(state=>campsiteStateIds.includes(state.id))
+  }
+  
   const handleCampsiteEdit= (e) =>{
     e.preventDefault();
     setErrors([]);
@@ -63,10 +72,12 @@ const MySiteCard = ({campsite, setFiltered}) => {
         return campsite;
       }
     });
-    setUser({...user, campsites:updatedCampsites})
+    const updatedStates=updateStates(updatedCampsites)
+    setUser({...user, campsites:updatedCampsites, states:updatedStates})
     setEditCampsite(false)
     setFiltered(updatedCampsites)
   }
+  
 
   return (
     <Grid item xs={12} p={2} sx={{ width: "100%" }}>
@@ -300,6 +311,7 @@ const MySiteCard = ({campsite, setFiltered}) => {
                   <List sx={{mt:1}}>
                     <ListItem> Latitude: {campsite.latitude} </ListItem>
                     <ListItem> Longitude: {campsite.longitude} </ListItem>
+                    <ListItem> State: {campsiteState.name}</ListItem>
                     <ListItem> Access Type: {campsite.access_type}</ListItem>
                     <ListItem> Land Type: {campsite.land_type}</ListItem>
                   </List>

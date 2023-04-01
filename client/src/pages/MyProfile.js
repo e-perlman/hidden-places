@@ -6,9 +6,12 @@ import UserFollowCard from "../components/UserFollowCard";
 import UserInfoCard from "../components/UserInfoCard";
 
 import styled from 'styled-components'
+import StateCard from "../components/StateCard";
 
 const MyProfile = () => {
     const [user, setUser]=useContext(UserContext)
+
+    console.log(user.states)
 
   return (
     <Box
@@ -46,8 +49,8 @@ const MyProfile = () => {
           <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={6}>
             <Box  flex={1} textAlign='center'>
               <Typography variant='h4'>States</Typography>
-              {user.followers.map((follower)=>(
-                  <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
+              {user.states.map((state)=>(
+                  <StateCard key={state.id} state={state}></StateCard>
               ))}
             </Box>
           </Grid>

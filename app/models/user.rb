@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
     has_many :campsites
 
-    has_many :states, through: :campsites
+    has_many :states, -> { distinct }, through: :campsites
     
     has_secure_password
 
