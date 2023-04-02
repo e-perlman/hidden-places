@@ -41,7 +41,7 @@ const NewCampsite = () => {
 
     const updateStates=(newCampsite)=> {
         const campsiteStateIds=user.campsites.map(site=>site.state_id)
-        if (campsiteStateIds.includes(newCampsite.state_id)){console.log("oops")}
+        if (campsiteStateIds.includes(newCampsite.state_id)){}
             
         else setUser({...user, states:[...user.states,newCampsite.state]})
       }

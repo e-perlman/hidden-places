@@ -25,7 +25,6 @@ const Login = () => {
           fetch("/feed").then((r) => {
             if (r.ok) {
               r.json().then((feed) => {
-                console.log(feed)
                 setFeed(feed)});
             }
           });

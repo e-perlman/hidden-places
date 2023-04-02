@@ -57,7 +57,6 @@ const UserFollowCard = ({user}) => {
         )
     }     
     const onFollow = (user,campsites) => {
-        console.log(campsites)
         const notFollowing=currentUser.not_following.filter(followee=>followee.id!==user.id)
         setFeed([...feed,...campsites])
         setCurrentUser({...currentUser, followees:[...currentUser.followees,user], not_following:notFollowing, followees_number: currentUser.followees_number+1})

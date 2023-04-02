@@ -18,9 +18,7 @@ const NavBar = () => {
 
 
   useEffect(() => {
-        console.log(location.pathname)
         if (paths.includes(location.pathname)){
-          console.log('hits')
           setVal(location.pathname)
         }
         else setVal(false)
