@@ -58,7 +58,7 @@ const NewCampsite = () => {
           }).then((r) => {
             if (r.ok) {
               r.json().then((campsite) => {
-                  setUser({...user, campsites:[...user.campsites,campsite]})
+                  setUser({...user, campsites:[...user.campsites,campsite], campsites_number:user.campsites_number+1})
                   updateStates(campsite)
                 setCampsiteInfo({
                     name:'',

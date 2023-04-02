@@ -25,7 +25,7 @@ const MySiteCard = ({campsite, setFiltered}) => {
         if (r.ok) {
           const updatedCampsites=user.campsites.filter(site=>site.id!==campsite.id)
           const updatedStates=updateStates(updatedCampsites)
-          setUser({...user, campsites:updatedCampsites, states:updatedStates})
+          setUser({...user, campsites:updatedCampsites, states:updatedStates, campsites_number:user.campsites_number-1})
           setFiltered(updatedCampsites)
         } else {
             r.json().then((err) => setErrors(err.errors));

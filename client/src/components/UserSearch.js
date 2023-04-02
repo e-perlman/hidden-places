@@ -3,7 +3,7 @@ import {Paper, IconButton, InputBase} from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search';
 import styled from 'styled-components';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-const UserSearch = () => {
+const UserSearch = ({search,onSearchChange}) => {
   return (
     <Wrap>
       <Paper
@@ -13,12 +13,12 @@ const UserSearch = () => {
         <AccountCircleIcon/>
         <InputBase
           sx={{ ml: 1, flex: 1 }}
-          placeholder="Search All Users"
+          placeholder="Search Users"
           inputProps={{ 'aria-label': 'search google maps' }}
+          value={search} 
+          onChange={onSearchChange} 
         />
-        <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-          <SearchIcon />
-        </IconButton>
+        <SearchIcon />
       </Paper>
     </Wrap>
   )

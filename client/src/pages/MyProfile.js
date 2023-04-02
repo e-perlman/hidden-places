@@ -14,11 +14,9 @@ const MyProfile = () => {
   return (
     <Box
       overflow="auto"
-      height="100vh"
+      height="80vh"
       flexDirection="column"
       display="flex"
-      // bgcolor="blue"
-      // border="2px solid yellow"
     >
       <Box p={2}>
         <Grid container justifyContent='center' alignItems='center'>
@@ -28,9 +26,7 @@ const MyProfile = () => {
         </Grid>
       </Box>
       <Box
-        overflow="auto"
         flex={1}
-        // border="2px solid red"
         flexDirection="column"
         display="flex"
         p={2}
@@ -38,8 +34,8 @@ const MyProfile = () => {
         <Grid style={{ display: "flex", flex: 1 }} container spacing={3}>
         <Grid item xs={1}></Grid>
           <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={4}>
-            <Box  flex={1} textAlign='center'>
-              <Typography variant='h4'>Followers</Typography>
+            <Box  flex={1} textAlign='center' height="65vh" overflow='auto'  alignItems= "flex-start">
+               <Typography style={{position:'sticky', top: '0px', background: '#282c34',zIndex: 1}} variant='h4'>My Followers</Typography>
               {user.followers.map((follower)=>(
                   <UserFollowCard key={follower.id} user={follower}></UserFollowCard>
               ))}
@@ -47,8 +43,8 @@ const MyProfile = () => {
           </Grid>
           <Grid item xs={2}></Grid>
           <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={4}>
-            <Box  flex={1} textAlign='center'>
-              <Typography variant='h4'>States</Typography>
+            <Box  flex={1} textAlign='center' height="65vh" overflow='auto'>
+              <Typography style={{position:'sticky', top: '0px', background: '#282c34',zIndex: 1}} variant='h4'>My States</Typography>
               {user.states.map((state)=>(
                   <StateCard key={state.id} state={state}></StateCard>
               ))}

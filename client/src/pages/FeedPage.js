@@ -44,7 +44,7 @@ const Feed = () => {
         <Grid item xs={1}></Grid>
         <Grid style={{ display: "flex", flex: 1, overflowY: "scroll"}} item xs={5}>
           <Box flex={1} height="80vh" overflow='auto'>
-            <Typography variant='h4'>Feed</Typography>
+            <Typography style={{textAlign:'center', position:'sticky', top: '0px', background: '#282c34',zIndex: 1}} variant='h4'>Feed</Typography>
             {campsites.map((campsite)=>(
                 <UserSiteCard key={campsite.id} campsite={campsite}></UserSiteCard>
             ))}

@@ -7,16 +7,16 @@ const UserInfoCard = () => {
   return (
     <Card xs={2}>
         <CardHeader
-        avatar={<Avatar alt={user.first_name} src={user.profile_pic} sx={{ width: 75, height: 75 }}></Avatar>}
+        avatar={<Avatar alt={user.first_name} src={user.profile_pic} sx={{ width: 110, height: 110 }}></Avatar>}
         titleTypographyProps={{variant:'h4' }}
         title={`${user.first_name} ${user.last_name}`}
         subheader={
             <>
             @{user.username}
             <br/> 
-            Following:   Followers:
+            Following: {user.followees_number} Followers: {user.followers_number}
             <br/>
-            Sites:
+            Campsites: {user.campsites_number}
             </>
             }>   
         </CardHeader>

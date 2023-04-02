@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {Grid, Card, Box, Avatar, Stack, FormControl, FormLabel, FormControlLabel, Button, ButtonGroup,InputLabel,CardContent, Typography, Divider, List, ListItem, Rating, TextField, RadioGroup, Radio, MenuItem, Select, InputAdornment, FormGroup} from '@mui/material'
-import Error from '../styles/Error'
 
 
 const UserSiteCard = ({campsite}) => {
@@ -9,7 +8,7 @@ const UserSiteCard = ({campsite}) => {
         day: "2-digit",
         year: "numeric"
     });
-    const [errors,setErrors]=useState([])
+    
   return (
     <Grid item xs={12} p={2} sx={{ width: "100%" }}>
             <Card sx={{ borderRadius: 4, p: 3 }}>
@@ -72,6 +71,7 @@ const UserSiteCard = ({campsite}) => {
                   <List sx={{mt:1}}>
                     <ListItem> Latitude: {campsite.latitude} </ListItem>
                     <ListItem> Longitude: {campsite.longitude} </ListItem>
+                    <ListItem> State: {campsite.state.name}</ListItem>
                     <ListItem> Access Type: {campsite.access_type}</ListItem>
                     <ListItem> Land Type: {campsite.land_type}</ListItem>
                   </List>

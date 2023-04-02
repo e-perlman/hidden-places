@@ -53,7 +53,7 @@ const UserSitePage = () => {
     >
       <Grid container spacing={3} style={{ display: "flex", flex: 1 }}>
       <Grid item xs={1}></Grid>
-        <Grid tyle={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={5}>
+        <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={5}>
           <Box flex={1} height="80vh" overflow='auto' >
             <Typography variant='h4'> User Site's</Typography>
             {campsites.map((campsite)=>(
