@@ -27,7 +27,7 @@ const MySites = () => {
         </Grid>
       </Box>
       <Box
-        overflow="auto"
+        // overflow="auto"
         flex={1}
         // border="2px solid red"
         flexDirection="column"
@@ -37,7 +37,7 @@ const MySites = () => {
         <Grid container spacing={3} style={{ display: "flex", flex: 1 }}>
         <Grid item xs={1}></Grid>
           <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={5}>
-            <Box flex={1}>
+            <Box flex={1} height="80vh" overflow='auto'>
               <Typography variant='h4'>My Sites</Typography>
               {filtered.map((campsite)=>(
                   <MySiteCard key={campsite.id} campsite={campsite} setFiltered={setFiltered}></MySiteCard>

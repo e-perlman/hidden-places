@@ -80,6 +80,8 @@ const NewCampsite = () => {
           });
     }
 
+    if(!states) return <Typography variant='h5'>Loading</Typography>
+
   return (
       <Grid container sx={{justifyContent: 'center'}}>
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "center" }}>

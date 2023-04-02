@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../styles/Button"
 import Logo from '../styles/Logo';
@@ -8,8 +8,19 @@ import {Tab, Tabs} from "@mui/material"
 
 const NavBar = () => {
   const [user, setUser]=useContext(UserContext)
+  
+  const location=useLocation()
 
-  const [val, setVal] = useState('one');
+  const [val, setVal] = useState(false);
+  
+  const paths=[ '/','/my_profile', '/my_sites','/feed','/following']
+
+  useEffect(() => {
+        if (paths.includes(location.pathname)){
+          setVal(location.pathname)
+        }
+        else setVal(false)
+  }, []);
   
   const handleTab = (e, newVal) => {
       setVal(newVal);
@@ -27,11 +38,11 @@ const NavBar = () => {
     <>
     <Wrapper>
     <NavLeft>
-        <Button as={Link} to="/new_state"> Add New State or Territory</Button>
+        <Button onClick={()=>setVal(false)} as={Link} to="/new_state"> Add New State or Territory</Button>
       </NavLeft>
       <Logo>Hidden Places</Logo>
       <Nav>
-        <Button color="primary" as={Link} to="/new_site"> Add New Campsite</Button>
+        <Button onClick={()=>setVal(false)} color="primary" as={Link} to="/new_site"> Add New Campsite</Button>
         <Button color="secondary" onClick={handleLogout}> Logout</Button>
       </Nav>
     </Wrapper>
@@ -47,12 +58,11 @@ const NavBar = () => {
             backgroundColor: "#006600"
           }}}
       >
-        <Tab value ='one' component={Link} label='Home' to="/"/>
-        <Tab value='two' component={Link} label='My Profile' to="/my_profile"/>
-        <Tab value='three' component={Link} label='My Sites' to="/my_sites"/>
-        <Tab value='four' component={Link} label='Sites Feed' to="/feed"/>
-        <Tab value='five' component={Link} label='Following' to="/following"/>
-        {/* <Tab value='six' component={Link} label='New Campsite' to="/new_site"/> */}
+        <Tab value ='/' component={Link} label='Home' to="/"/>
+        <Tab value='/my_profile' component={Link} label='My Profile' to="/my_profile"/>
+        <Tab value='/my_sites' component={Link} label='My Sites' to="/my_sites"/>
+        <Tab value='/feed' component={Link} label='Sites Feed' to="/feed"/>
+        <Tab value='/following' component={Link} label='Following' to="/following"/>
       </Tabs>
       </TabWrap>
     </>
