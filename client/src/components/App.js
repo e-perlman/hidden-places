@@ -27,9 +27,9 @@ function App() {
       <NavBar user={user} setUser={setUser} />
       <main>
         <Switch>
-        <Route exact path='/following/:user_id'>
-          <UserSitePage></UserSitePage>
-        </Route>
+          <Route exact path='/following/:user_id'>
+            <UserSitePage></UserSitePage>
+          </Route>
           <Route path="/my_profile">
             <MyProfile></MyProfile>
           </Route>

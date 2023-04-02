@@ -15,8 +15,12 @@ const NavBar = () => {
   
   const paths=[ '/','/my_profile', '/my_sites','/feed','/following']
 
+
+
   useEffect(() => {
+        console.log(location.pathname)
         if (paths.includes(location.pathname)){
+          console.log('hits')
           setVal(location.pathname)
         }
         else setVal(false)
@@ -29,7 +33,8 @@ const NavBar = () => {
   const handleLogout=() => {
       fetch("/logout", { method: "DELETE" }).then((r) => {
         if (r.ok) {
-          setUser(null);
+          setVal(false);
+          setUser(null)
         }
       });
   }
@@ -43,7 +48,7 @@ const NavBar = () => {
       <Logo>Hidden Places</Logo>
       <Nav>
         <Button onClick={()=>setVal(false)} color="primary" as={Link} to="/new_site"> Add New Campsite</Button>
-        <Button color="secondary" onClick={handleLogout}> Logout</Button>
+        <Button color="secondary" onClick={handleLogout} as={Link} to="/"> Logout</Button>
       </Nav>
     </Wrapper>
     <TabWrap>
