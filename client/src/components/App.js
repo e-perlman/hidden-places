@@ -45,7 +45,7 @@ function App() {
           <Route path="/new_state">
             <NewState></NewState>
           </Route>
-          <Route path="/feed">
+          <Route path="/my_feed">
             <Feed></Feed>
           </Route>
           <Route path='/'>

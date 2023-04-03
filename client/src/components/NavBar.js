@@ -13,7 +13,7 @@ const NavBar = () => {
 
   const [val, setVal] = useState(false);
   
-  const paths=[ '/','/my_profile', '/my_sites','/feed','/following']
+  const paths=[ '/','/my_profile', '/my_sites','/my_feed','/following']
 
 
 
@@ -64,7 +64,7 @@ const NavBar = () => {
         <Tab value ='/' component={Link} label='Home' to="/"/>
         <Tab value='/my_profile' component={Link} label='My Profile' to="/my_profile"/>
         <Tab value='/my_sites' component={Link} label='My Sites' to="/my_sites"/>
-        <Tab value='/feed' component={Link} label='Sites Feed' to="/feed"/>
+        <Tab value='/my_feed' component={Link} label='Sites Feed' to="/my_feed"/>
         <Tab value='/following' component={Link} label='Following' to="/following"/>
       </Tabs>
       </TabWrap>
