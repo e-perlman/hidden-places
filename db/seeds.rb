@@ -10,6 +10,7 @@
 User.destroy_all
 Relationship.destroy_all
 Campsite.destroy_all
+State.destroy_all
 
 User.create!([
     {   username: 'eperlman',
@@ -46,10 +47,24 @@ users=User.all
 User.first.followers << users[1..9]
 User.first.followees<< [User.second]
 
+State.create!(
+name: 'Washington',
+climate: 'Rainy',
+known_for:'Beautiful Trees',
+state_pic:'https://www.planetware.com/wpimages/2021/09/washington-state-best-national-forests-gifford-pinchot-national-forest-mt-adams.jpg'
+)
+
+State.create!(
+name: 'Oregon',
+climate: 'Moderate Cloudy/Rainy',
+known_for:'Lush Forrest and Beautiful Beaches',
+state_pic:'https://media.istockphoto.com/id/1139773685/photo/trillium-lake-and-mount-hood-oregon-usa-at-sunset.jpg?s=612x612&w=0&k=20&c=bbylDg9T9AStEqLLAPkOtbWwTv_DK_p6TfCkEOrP-DE='
+)
+
 Campsite.create!(
 name: 'Waterfall',
-user_id: 3,
-state_id: 1,
+user: User.first,
+state: State.first,
 latitude: 45.539490,
 longitude: -122.217163,
 access_type: 'Drive_In',
@@ -62,8 +77,8 @@ accessibility: 5)
 
 Campsite.create!(
 name: 'Waterfall',
-user_id: 3,
-state_id: 1,
+user: User.first,
+state: State.first,
 latitude: 45.539490,
 longitude: -122.217163,
 access_type: 'Drive',
