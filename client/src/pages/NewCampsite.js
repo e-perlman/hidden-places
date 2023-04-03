@@ -87,6 +87,7 @@ const NewCampsite = () => {
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "center" }}>
             <ThemeProvider theme={darkTheme}>
                 <Item elevation={6} sx={{p:2}}>
+                    <Typography variant='h5' textAlign='center'> Add New Campsite</Typography>
                     <form onSubmit={handleSubmit}>
                         <Stack spacing={3} direction="column">
                             <TextField id='campsite-name'

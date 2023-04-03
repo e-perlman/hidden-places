@@ -59,11 +59,12 @@ const NewState = () => {
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "center" }}>
             <ThemeProvider theme={darkTheme}>
                 <Item elevation={6} sx={{p:2, width: '100%'}}>
+                <Typography variant='h5' textAlign='center'> Add New State or Territory</Typography>
                     <form onSubmit={handleSubmit}>
                         <Stack spacing={3} direction="column">
                             <TextField id='campsite-name'
                                 variant="standard"
-                                label="State Name"
+                                label="Name"
                                 name="name"
                                 onChange={handleChange}
                                 value={stateInfo.name}

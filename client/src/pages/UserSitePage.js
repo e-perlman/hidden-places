@@ -22,6 +22,7 @@ const UserSitePage = () => {
         });
     }, []);
 
+
     let campsites=[]
     if (!filtered){
       campsites=userCampsites
@@ -55,7 +56,7 @@ const UserSitePage = () => {
       <Grid item xs={1}></Grid>
         <Grid style={{ display: "flex", flex: 1, overflowY: "scroll" }} item xs={5}>
           <Box flex={1} height="80vh" overflow='auto' >
-            <Typography variant='h4'> User Site's</Typography>
+            <Typography variant='h4'> {campsites.length>0? null:'No campsites!'} </Typography>
             {campsites.map((campsite)=>(
                 <UserSiteCard key={campsite.id} campsite={campsite}></UserSiteCard>
             ))}
